@@ -1,0 +1,49 @@
+
+header {
+  padding: 30px;
+  margin: -15px;
+  font: 500 20px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-align: center;
+  color: #fff;
+  background: #6f5499;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+h3 {
+  color: #222;
+}
+h4 {
+  color: #444;
+}
+.row div {
+  padding: 13px;
+  font: 100 16px/1 'Open Sans', sans-serif;
+  text-align: center;
+  color: #777;
+}
+
+.one {
+  order: 1;
+}
+@media (min-width: 62em) {
+  .one {
+    order: 2;
+  }
+}
+
+.two {
+  order: 2;
+}
+@media (min-width: 62em) {
+  .two {
+    order: 3;
+  }
+}
+
+.three {
+  order: 3;
+}
+@media (min-width: 62em) {
+  .three {
+    order: 1;
+  }
+}

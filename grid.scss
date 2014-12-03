@@ -1,0 +1,155 @@
+@import url('http://fonts.googleapis.com/css?family=Open+Sans:600');
+
+// Bootstrap screen size variables
+$screen-xs: 30em;
+$screen-sm: 48em;
+$screen-md: 62em;
+$screen-lg: 75em;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  background: #f2f2f2;
+}
+
+.wrapper {
+  margin: 15px auto;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+  @media (min-width: $screen-md) {
+    width: $screen-md;
+  }
+  @media (min-width: $screen-lg) {
+    width: $screen-lg;
+  }
+}
+
+[class*="col-"] {
+  margin-bottom: 15px;
+  background: #fefefe;
+  border: 1px solid rgba(0,0,0,.15);
+  //box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+[class*="col-"]:last-child {
+  margin-right: 0;
+}
+
+// Enable our flexbox magic
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+// Generate the actual columns
+// Currently using seperate loops so that we can preserve the cascace, will eventually put into a mixin
+  @for $i from 12 through 1 {
+    .col-xs-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+.col-xs-flex {
+  flex: 1;
+}
+@media (min-width: $screen-sm) {
+  @for $i from 12 through 1 {
+     .col-sm-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+  .col-sm-flex {
+    flex: 1;
+  }
+}
+@media (min-width: $screen-md) {
+  @for $i from 12 through 1 {
+     .col-md-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+  .col-md-flex {
+    flex: 1;
+  }
+}
+@media (min-width: $screen-lg) {
+  @for $i from 12 through 1 {
+     .col-lg-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+  .col-lg-flex {
+    flex: 1;
+  }
+}
+
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-right {
+  justify-content: flex-end;
+}
+
+.align-center {
+  justify-content: center;
+}
+
+.align-bottom {
+  align-self: flex-end;
+}
+
+.align-top {
+  align-self: flex-start;
+}
+
+
+
+// Demo specific code
+header {
+  padding: 30px;
+  font: 500 20px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
+  text-align: center;
+  color: #fff;
+  background: #6f5499;
+  box-shadow: 0 1px 1px rgba(0,0,0,.1);
+}
+
+h3 {
+  color: #222;
+}
+h4 {
+  color: #444;
+}
+
+.row div {
+  padding: 13px;
+  font: 100 16px/1 'Open Sans', sans-serif;
+  text-align: center;
+  color: #777;
+}
+
+.one {
+  order: 1;
+  @media (min-width: $screen-md) {
+    order: 2;
+  }
+}
+.two {
+  order: 2;
+  @media (min-width: $screen-md) {
+    order: 3;
+  }
+}
+.three {
+  order: 3;
+    @media (min-width: $screen-md) {
+    order: 1;
+  }
+}
