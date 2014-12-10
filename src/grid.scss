@@ -1,0 +1,253 @@
+// Bootstrap screen size variables
+$screen-xs: 30rem;
+$screen-sm: 48rem;
+$screen-md: 62rem;
+$screen-lg: 75rem;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+.container-fluid {
+  margin: 15px auto;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.container {
+  @extend .container-fluid;
+  
+  @media (min-width: $screen-md) {
+    width: $screen-md;
+  }
+  @media (min-width: $screen-lg) {
+    width: $screen-lg;
+  }
+}
+
+
+
+/*
+.small-grid-block {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
+}
+
+
+.small-grid-content {
+  display: block;
+  padding: 0 1rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+  flex: 1 1;
+}
+*/
+
+// Enable our flexbox magic
+.row {
+  display: flex;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  order: 0;
+  height: auto;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: -ms-autohiding-scrollbar; 
+}
+
+  .grid-content .grid-block {
+    margin-left: -1rem;
+    margin-right: -1rem; }
+
+.shrink {
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto; 
+}
+
+// Generate the actual columns
+// TODO: Currently using seperate loops so that we can preserve the cascade, will eventually put into a mixin
+
+/**********************************************
+//
+// Generate Horizontal Columns
+//
+**********************************************/
+[class*="col-"] {
+  order: 0;
+  position: relative;
+  flex-flow: row wrap;
+}
+
+
+@for $i from 12 through 1 {
+    .col-xs-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+.col-xs-flex {
+  flex: 1 1;
+}
+@media (min-width: $screen-sm) {
+  @for $i from 12 through 1 {
+     .col-sm-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+  .col-sm-flex {
+    flex: 1 1;
+  }
+}
+@media (min-width: $screen-md) {
+  @for $i from 12 through 1 {
+     .col-md-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+  .col-md-flex {
+    flex: 1 1;
+  }
+}
+@media (min-width: $screen-lg) {
+  @for $i from 12 through 1 {
+     .col-lg-#{$i} {
+      flex: 0 0 ($i/12*100%); 
+    }
+  }
+  .col-lg-flex {
+    flex: 1 1;
+  }
+}
+
+/**********************************************
+//
+// Vertical Columns
+//
+**********************************************/
+
+.vertical {
+    flex-flow: column nowrap;
+    align-items: stretch;
+}
+
+@media only screen and (min-width: $screen-xs) {
+    .xs-vertical {
+        flex-flow: column nowrap;
+        align-items: stretch;
+    }
+}
+@media only screen and (min-width: $screen-sm) {
+    .sm-vertical {
+        flex-flow: column nowrap;
+        align-items: stretch;
+    }
+}
+@media only screen and (min-width: $screen-md) {   
+    .md-vertical {
+        flex-flow: column nowrap;
+        align-items: stretch;
+    }
+}
+@media only screen and (min-width: $screen-lg) { 
+    .lg-vertical {
+        flex-flow: column nowrap;
+        align-items: stretch;
+    }
+}
+
+/**********************************************
+//
+// Alignment Classes
+//
+**********************************************/
+.align-left {
+  justify-content: flex-start;
+}
+
+.align-right {
+  justify-content: flex-end;
+}
+
+.align-center {
+  justify-content: center;
+}
+
+.align-justify {
+  justify-content: space-between;   
+}
+
+.align-spaced {
+  justify-content: space-around;   
+}
+
+.align-bottom {
+  align-self: flex-end;
+}
+
+.align-top {
+  align-self: flex-start;
+}
+
+/**********************************************
+//
+// Order Classes
+//
+**********************************************/
+  @for $i from 1 through 12 {
+    .order-#{$i} {
+      order: $i; 
+    }
+  }
+@media (min-width: $screen-xs) {
+  @for $i from 1 through 12 {
+    .xs-order-#{$i} {
+      order: $i; 
+    }
+  }
+}
+@media (min-width: $screen-sm) {
+  @for $i from 1 through 12 {
+    .sm-order-#{$i} {
+      order: $i; 
+    }
+  }
+}
+@media (min-width: $screen-md) {
+  @for $i from 1 through 12 {
+    .md-order-#{$i} {
+      order: $i; 
+    }
+  }
+}
+@media (min-width: $screen-lg) {
+  @for $i from 1 through 12 {
+    .lg-order-#{$i} {
+      order: $i; 
+    }
+  }
+}

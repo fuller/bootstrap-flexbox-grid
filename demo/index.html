@@ -1,0 +1,198 @@
+<head>
+<meta name="viewport" content="width=device-width">
+
+<link rel="stylesheet" type="text/css" href="demo.css">
+<link rel="stylesheet" type="text/css" href="../grid-x.css">
+</head>
+
+<header>Bootstrap Flexbox Grid</header>
+
+<div class="container">
+   <h1>Standard Columns</h1>
+  <div class="row">
+    <div class="col-xs-1">col-xs-1</div>
+    <div class="col-xs-11">col-xs-11</div>
+  </div>
+   
+  <div class="row">
+    <div class="col-xs-2">col-xs-2</div>
+    <div class="col-xs-10">col-xs-10</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-3">col-xs-3</div>
+    <div class="col-xs-9">col-xs-9</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-4">col-xs-4</div>
+    <div class="col-xs-8">col-xs-8</div>
+  </div>
+  
+ <div class="row">
+    <div class="col-xs-5">col-xs-5</div>
+    <div class="col-xs-7">col-xs-7</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-6">col-xs-6</div>
+    <div class="col-xs-6">col-xs-6</div>
+  </div>
+  <!--
+  <div class="row">
+    <div class="col-xs-7">col-xs-7</div>
+    <div class="col-xs-5">col-xs-5</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-8">col-xs-8</div>
+    <div class="col-xs-4">col-xs-4</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-9">col-xs-9</div>
+    <div class="col-xs-3">col-xs-3</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-10">col-xs-10</div>
+    <div class="col-xs-2">col-xs-2</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-11">col-xs-11</div>
+    <div class="col-xs-1">col-xs-1</div>
+  </div>
+  -->
+<!--  FIX THIS
+ <h3>Vertical</h3>
+ <p>By default, rows in a grid are layed out horizontally. A grid can be reoriented to be vertical by adding the vertical class to a parent element</p>
+ <p>This behavior doesn't cascade down to child blocks—they'll be horizontal by default also.</p>
+  <div class="row vertical">
+    <div class="col-xs-6">
+       <div class="col-xs-flex">col-flex</div>
+       <div class="col-xs-flex">col-flex</div>
+    </div>
+    <div class="col-xs-6">
+       <div class="col-xs-flex">col-flex</div>
+       <div class="col-xs-flex">col-flex</div>
+    </div>
+    <div class="col-xs-6 col-md-9">xs-6 md-9</div>
+  </div> 
+  -->
+  
+  <h3>Responsive</h3>
+  <div class="row">
+    <div class="col-xs-6 col-md-3">xs-6 md-3</div>
+    <div class="col-xs-6 col-md-9">xs-6 md-9</div>
+  </div> 
+  
+  <div class="row">
+    <div class="col-xs-6 col-md-4">xs-6 md-4</div>
+    <div class="col-xs-6 col-md-4">xs-6 md-4</div>
+    <div class="col-xs-12 col-md-4">xs-12 md-4</div>
+  </div> 
+
+
+  <h3>Offsets</h3>
+  <h4>align-left</h4>
+  <div class="description">Blocks clump together on the left. This is the default.</div>
+  <div class="row align-left">
+    <div class="col-xs-4">col-xs-4</div>
+    <div class="col-xs-4">col-xs-4</div>
+  </div>
+  <h4>align-right</h4>
+  <div class="description">Blocks clump together on the right</div>
+   <div class="row align-right">
+    <div class="col-xs-4">col-xs-4</div>
+    <div class="col-xs-4">col-xs-4</div>
+  </div>
+  <h4>align-center</h4>
+  <div class="description">Blocks clump together in the middle.</div>
+  <div class="row align-center">
+    <div class="col-xs-4">col-xs-4</div>
+    <div class="col-xs-4">col-xs-4</div>
+  </div>
+  <h4>align-justify</h4>
+  <div class="description">Blocks spread out so that the space <i>between</i> each one is the same.</div>
+  <div class="row align-justify">
+    <div class="col-xs-3">col-xs-3</div>
+    <div class="col-xs-3">col-xs-3</div>
+    <div class="col-xs-3">col-xs-3</div>
+  </div>
+  <h4>align-spaced </h4>
+  <div class="description">Blocks spread out so that the space <i>around</i> each one is the same.</div>
+  <div class="row align-spaced">
+    <div class="col-xs-3">col-xs-3</div>
+    <div class="col-xs-3">col-xs-3</div>
+    <div class="col-xs-3">col-xs-3</div>
+  </div>
+  
+  <h3>Reorder</h3>
+  <p>You can easily reorder elements by sitting their order property in the CSS. Blocks can be reordered to be different from the order they appear in the HTML. This is known as source ordering.</p>
+  <div class="row align-center">
+    <div class="col-xs-flex order-2">1</div>
+    <div class="col-xs-flex order-3">2</div>
+    <div class="col-xs-flex order-1">3</div>
+  </div>
+  
+  
+  <div class="row align-center">
+    <div class="col-xs-flex md-order-2">1</div>
+    <div class="col-xs-flex md-order-1">2</div>
+  </div>
+  
+  
+  <h3>Aligning Columns</h3>
+  <p></p>
+  <div class="row">
+    <div class="col-xs-6">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum </div>
+    <div class="col-xs-6">Equal Height Columns are the default</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-6 align-bottom">.align-bottom</div>
+    <div class="col-xs-6">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum </div>
+  </div>
+  
+    <div class="row">
+   <div class="col-xs-6">"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum </div>
+    <div class="col-xs-6 align-top">.align-top</div>
+  </div>
+  
+  
+  <h1>Flexible Columns</h1> 
+  <p>With the col-*-flex declaration, all of the items in the row will flex to fit the row size. This can be used to create odd-column layouts also mixed with fixed percentage columns to provide additional layout possibilities.</p>
+   <div class="row">
+    <div class="col-xs-flex">col-xs-flex</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+  </div>
+ 
+  <div class="row">
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+  </div>
+  
+   <div class="row">
+    <div class="col-xs-6 col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>   
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+  </div>
+  
+  <div class="row">
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>   
+    <div class="col-xs-flex col-md-5">col-xs-flex col-md-5 </div>
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+    <div class="col-xs-flex">col-xs-flex</div>
+  </div>
+</div>

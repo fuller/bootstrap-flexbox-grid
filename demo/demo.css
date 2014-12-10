@@ -8,42 +8,33 @@ header {
   background: #6f5499;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
-h3 {
+
+[class*="col-"] {
+  margin-bottom: 15px;
+  background: #fefefe;
+  border: 1px solid rgba(0,0,0,.15);
+}
+
+[class*="col-"]:last-child {
+  margin-right: 0;
+}
+
+h3, .h3 {
   color: #222;
 }
-h4 {
+h4, .h4 {
   color: #444;
+  margin-bottom: .25em;
+}
+p,
+.description {
+    font-weight: 300;
+    margin-bottom: 1em;
 }
 .row div {
   padding: 13px;
-  font: 100 16px/1 'Open Sans', sans-serif;
+  font: 100 16px/1;
   text-align: center;
   color: #777;
 }
 
-.one {
-  order: 1;
-}
-@media (min-width: 62em) {
-  .one {
-    order: 2;
-  }
-}
-
-.two {
-  order: 2;
-}
-@media (min-width: 62em) {
-  .two {
-    order: 3;
-  }
-}
-
-.three {
-  order: 3;
-}
-@media (min-width: 62em) {
-  .three {
-    order: 1;
-  }
-}
