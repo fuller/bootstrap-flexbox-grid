@@ -2,3 +2,5 @@ node_modules/
 .sass-cache/
 foundation/
 scss-lint.log
+
+*.map
