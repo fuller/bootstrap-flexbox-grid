@@ -4,17 +4,6 @@ $screen-sm: 48rem;
 $screen-md: 62rem;
 $screen-lg: 75rem;
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
-
-html, body {
-  height: 100%;
-  font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
-  background: #f2f2f2;
-}
 
 .container-fluid {
   margin: 15px auto;
@@ -32,8 +21,6 @@ html, body {
     width: $screen-lg;
   }
 }
-
-
 
 /*
 .small-grid-block {
@@ -84,11 +71,7 @@ html, body {
     margin-left: -1rem;
     margin-right: -1rem; }
 
-.shrink {
-  -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto; 
-}
+
 
 // Generate the actual columns
 // TODO: Currently using seperate loops so that we can preserve the cascade, will eventually put into a mixin
@@ -180,6 +163,7 @@ html, body {
     }
 }
 
+
 /**********************************************
 //
 // Alignment Classes
@@ -212,6 +196,7 @@ html, body {
 .align-top {
   align-self: flex-start;
 }
+
 
 /**********************************************
 //
@@ -250,4 +235,37 @@ html, body {
       order: $i; 
     }
   }
+}
+
+/**********************************************
+//
+// Rando Utilities
+//
+**********************************************/
+
+@media (max-width: 767px) {
+  .hidden-xs {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .hidden-sm {
+    display: none !important;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hidden-md {
+    display: none !important;
+  }
+}
+@media (min-width: 1200px) {
+  .hidden-lg {
+    display: none !important;
+  }
+}
+
+.shrink {
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto; 
 }
