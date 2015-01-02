@@ -3,14 +3,28 @@ $screen-xs: 30rem;
 $screen-sm: 48rem;
 $screen-md: 62rem;
 $screen-lg: 75rem;
+$columns: 12;
+$block-columns: 6;
 
+$breakpoints: (
+  xs: $screen-xs,
+  sm: $screen-sm,
+  md: $screen-md,
+  lg: $screen-lg
+) !default;
 
+$breakpoint-classes: (xs sm md lg) !default;
+
+@import 'mixins';
+@import 'functions';
+ 
 .container-fluid {
-  margin: 15px auto;
+  margin: 1rem auto;
   width: 100%;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
+
 .container {
   @extend .container-fluid;
   
@@ -23,22 +37,6 @@ $screen-lg: 75rem;
 }
 
 /*
-.small-grid-block {
-  display: flex;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-  flex: 1 1;
-  flex-flow: row wrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  order: 0;
-  height: auto;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  -ms-overflow-style: -ms-autohiding-scrollbar; 
-}
-
 
 .small-grid-content {
   display: block;
@@ -51,27 +49,24 @@ $screen-lg: 75rem;
 */
 
 // Enable our flexbox magic
+/* block-content */
 .row {
   display: flex;
   height: 100vh;
   position: relative;
-  overflow: hidden;
   flex: 1 1;
   flex-flow: row wrap;
   align-items: stretch;
   justify-content: flex-start;
   order: 0;
   height: auto;
+  overflow: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; 
+   margin-left: -1rem;
+   margin-right: -1rem;
 }
-
-  .grid-content .grid-block {
-    margin-left: -1rem;
-    margin-right: -1rem; }
-
-
 
 // Generate the actual columns
 // TODO: Currently using seperate loops so that we can preserve the cascade, will eventually put into a mixin
@@ -81,25 +76,30 @@ $screen-lg: 75rem;
 // Generate Horizontal Columns
 //
 **********************************************/
+
+// When we get to doing this as mixin we will need to include these on each class
+/*
 [class*="col-"] {
   order: 0;
   position: relative;
   flex-flow: row wrap;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
+*/
 
-
-@for $i from 12 through 1 {
+@for $i from $columns through 1 {
     .col-xs-#{$i} {
-      flex: 0 0 ($i/12*100%); 
+      flex: 0 0 ($i/$columns*100%); 
     }
   }
 .col-xs-flex {
   flex: 1 1;
 }
 @media (min-width: $screen-sm) {
-  @for $i from 12 through 1 {
+  @for $i from $columns through 1 {
      .col-sm-#{$i} {
-      flex: 0 0 ($i/12*100%); 
+      flex: 0 0 ($i/$columns*100%); 
     }
   }
   .col-sm-flex {
@@ -107,9 +107,9 @@ $screen-lg: 75rem;
   }
 }
 @media (min-width: $screen-md) {
-  @for $i from 12 through 1 {
+  @for $i from $columns through 1 {
      .col-md-#{$i} {
-      flex: 0 0 ($i/12*100%); 
+      flex: 0 0 ($i/$columns*100%); 
     }
   }
   .col-md-flex {
@@ -117,9 +117,9 @@ $screen-lg: 75rem;
   }
 }
 @media (min-width: $screen-lg) {
-  @for $i from 12 through 1 {
+  @for $i from $columns through 1 {
      .col-lg-#{$i} {
-      flex: 0 0 ($i/12*100%); 
+      flex: 0 0 ($i/$columns*100%); 
     }
   }
   .col-lg-flex {
@@ -171,10 +171,12 @@ $screen-lg: 75rem;
 **********************************************/
 .align-left {
   justify-content: flex-start;
+  align-self: flex-start;
 }
 
 .align-right {
   justify-content: flex-end;
+  align-self: flex-end;
 }
 
 .align-center {
@@ -203,39 +205,43 @@ $screen-lg: 75rem;
 // Order Classes
 //
 **********************************************/
-  @for $i from 1 through 12 {
-    .order-#{$i} {
-      order: $i; 
+
+@each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+        @for $i from 1 through $columns {  
+            .#{$size}-order-#{$i} {
+                order: $i; 
+            }
+        }
     }
-  }
-@media (min-width: $screen-xs) {
-  @for $i from 1 through 12 {
-    .xs-order-#{$i} {
-      order: $i; 
-    }
-  }
 }
-@media (min-width: $screen-sm) {
-  @for $i from 1 through 12 {
-    .sm-order-#{$i} {
-      order: $i; 
+
+
+/**********************************************
+//
+// Block Columns
+//
+**********************************************/
+@each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+        @for $i from $block-columns through 1 {
+            .col-#{$size}-block-#{$i} {
+              flex-flow: row wrap;
+              overflow: visible;
+              list-style-type: none;
+
+              > li,
+              > div,
+              > section {
+                padding: 0 1rem 1rem;
+                flex: 0 0 percentage(1 / $i);
+              }
+            }
+        }
     }
-  }
 }
-@media (min-width: $screen-md) {
-  @for $i from 1 through 12 {
-    .md-order-#{$i} {
-      order: $i; 
-    }
-  }
-}
-@media (min-width: $screen-lg) {
-  @for $i from 1 through 12 {
-    .lg-order-#{$i} {
-      order: $i; 
-    }
-  }
-}
+
+
 
 /**********************************************
 //
@@ -243,24 +249,44 @@ $screen-lg: 75rem;
 //
 **********************************************/
 
-@media (max-width: 767px) {
+.visible-xs,
+.visible-sm,
+.visible-md,
+.visible-lg {
+  display: none !important;
+}
+
+@media (max-width: $screen-sm) {
   .hidden-xs {
     display: none !important;
   }
+  .visible-xs {
+    display: block !important;
+  }
 }
-@media (min-width: 768px) and (max-width: 991px) {
+@media (min-width: $screen-sm) and (max-width: $screen-md) {
   .hidden-sm {
     display: none !important;
   }
+  .visible-sm {
+    display: block !important;
+  }
 }
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: $screen-md) and (max-width: $screen-lg) {
   .hidden-md {
     display: none !important;
   }
+  .visible-md {
+    display: block !important;
+  }
+    
 }
-@media (min-width: 1200px) {
+@media (min-width: $screen-lg) {
   .hidden-lg {
     display: none !important;
+  }
+  .visible-lg {
+    display: block !important;
   }
 }
 

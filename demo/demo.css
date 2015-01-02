@@ -1,3 +1,4 @@
+
 *,
 *:before,
 *:after {
@@ -8,6 +9,8 @@ html, body {
   height: 100%;
   font-family: 'Helvetica Neue', 'Helvetica', Arial, sans-serif;
   background: #f2f2f2;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 header {
@@ -21,13 +24,24 @@ header {
 }
 
 [class*="col-"] {
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   background: #fefefe;
   border: 1px solid rgba(0,0,0,.15);
 }
 
 [class*="col-"]:last-child {
   margin-right: 0;
+}
+
+[class*="block"] {
+  margin-bottom: 0;
+  background: transparent;
+  border: 0;
+  text-align: center;
+}
+
+.demo-blocks > div {
+    padding: 1em !important;
 }
 
 h3, .h3 {
@@ -42,18 +56,18 @@ p,
     font-weight: 300;
     margin-bottom: 1em;
 }
+
 .row div {
-  padding: 13px;
-  font: 100 16px/1;
+  padding: 1rem;
   text-align: center;
-  color: #777;
+  color: #666;
 }
 
 img {
       max-width: 100%;
       height: auto;
       -ms-interpolation-mode: bicubic;
-
       display: inline-block;
       vertical-align: middle;
 }
+

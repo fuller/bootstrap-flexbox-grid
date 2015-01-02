@@ -30,12 +30,22 @@ module.exports = function(grunt) {
       }
     },
     sass: {                              // Task
-        dist: {                            // Target
+        dev: {                            // Target
           options: {                       // Target options
-            style: 'expanded'
+            style: 'expanded',
+            precision: '4'
           },
           files: {                         // Dictionary of files
             'dist/grid.css': 'src/grid.scss'
+          }
+        },
+        dist: {                            // Target
+          options: {                       // Target options
+            style: 'compressed',
+            precision: '4'
+          },
+          files: {                         // Dictionary of files
+            'dist/grid.min.css': 'src/grid.scss'
           }
         }
    },
@@ -128,7 +138,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
     
   // Default task.
-grunt.registerTask('default', ['sass', 'autoprefixer', 'combine_mq', 'cssmin']);
+grunt.registerTask('default', ['sass', 'autoprefixer']);
+grunt.registerTask('default2', ['sass', 'autoprefixer', 'combine_mq', 'cssmin']);
   grunt.registerTask('default2', ['jshint', 'qunit', 'concat', 'uglify']);
     
 
