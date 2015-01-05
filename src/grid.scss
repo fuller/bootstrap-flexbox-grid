@@ -23,7 +23,7 @@ $breakpoint-classes: (sm md lg) !default;
 
 // Set the main container for the page
 .container-fluid {
-  margin: 1rem auto;
+  margin: 0rem auto;
   width: 100%;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -81,6 +81,11 @@ $breakpoint-classes: (sm md lg) !default;
 // Generate Horizontal Columns
 //
 **********************************************/
+
+[class*="col-"]:not([class*="block"]) {
+  padding: 0 1rem;
+}
+
 
 @for $i from $columns through 1 {
     .col-xs-#{$i} {
@@ -195,6 +200,8 @@ $breakpoint-classes: (sm md lg) !default;
 
  @for $i from 1 through $block-columns {  
             .col-xs-block-#{$i} {
+              display: flex;
+              flex: 1 1;
               flex-flow: row wrap;
               overflow: visible;
               list-style-type: none;

@@ -23,11 +23,13 @@ header {
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-[class*="col-"] {
+[class*="col-"]:not([class*="block"]) {
+  padding: 1rem !important;
+  border: 1px solid rgba(0,0,0,.15);
   margin-bottom: 1rem;
   background: #fefefe;
-  border: 1px solid rgba(0,0,0,.15);
 }
+
 
 [class*="block"] {
   margin-bottom: 0;
@@ -52,13 +54,13 @@ p,
     font-weight: 300;
     margin-bottom: 1em;
 }
-
+/*
 .row div {
   padding: 1rem;
   text-align: center;
   color: #666;
 }
-
+*/
 img {
       max-width: 100%;
       height: auto;
