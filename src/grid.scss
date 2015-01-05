@@ -1,10 +1,12 @@
 // Bootstrap screen size variables
-$screen-xs: 30rem;
-$screen-sm: 48rem;
-$screen-md: 62rem;
-$screen-lg: 75rem;
-$columns: 12;
-$block-columns: 6;
+$screen-xs: 30em;
+$screen-sm: 48em;
+$screen-md: 62em;
+$screen-lg: 75em;
+$columns: 12 !default;
+$column-gutter: 1rem !default;
+$block-columns: 6 !default;
+
 
 $breakpoints: (
   xs: $screen-xs,
@@ -13,11 +15,13 @@ $breakpoints: (
   lg: $screen-lg
 ) !default;
 
-$breakpoint-classes: (xs sm md lg) !default;
+$breakpoint-classes: (sm md lg) !default;
 
 @import 'mixins';
 @import 'functions';
- 
+
+
+// Set the main container for the page
 .container-fluid {
   margin: 1rem auto;
   width: 100%;
@@ -36,9 +40,9 @@ $breakpoint-classes: (xs sm md lg) !default;
   }
 }
 
-/*
 
-.small-grid-content {
+// Grid content
+@mixin grid-content() {
   display: block;
   padding: 0 1rem;
   overflow-y: auto;
@@ -46,26 +50,27 @@ $breakpoint-classes: (xs sm md lg) !default;
   -ms-overflow-style: -ms-autohiding-scrollbar;
   flex: 1 1;
 }
-*/
+
 
 // Enable our flexbox magic
 /* block-content */
 .row {
   display: flex;
-  height: 100vh;
   position: relative;
   flex: 1 1;
   flex-flow: row wrap;
   align-items: stretch;
   justify-content: flex-start;
   order: 0;
+    
   height: auto;
   overflow: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar; 
-   margin-left: -1rem;
-   margin-right: -1rem;
+  backface-visibility: hidden;
+  margin-left: -1rem;
+  margin-right: -1rem; 
 }
 
 // Generate the actual columns
@@ -77,17 +82,6 @@ $breakpoint-classes: (xs sm md lg) !default;
 //
 **********************************************/
 
-// When we get to doing this as mixin we will need to include these on each class
-/*
-[class*="col-"] {
-  order: 0;
-  position: relative;
-  flex-flow: row wrap;
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-*/
-
 @for $i from $columns through 1 {
     .col-xs-#{$i} {
       flex: 0 0 ($i/$columns*100%); 
@@ -96,37 +90,20 @@ $breakpoint-classes: (xs sm md lg) !default;
 .col-xs-flex {
   flex: 1 1;
 }
-@media (min-width: $screen-sm) {
-  @for $i from $columns through 1 {
-     .col-sm-#{$i} {
-      flex: 0 0 ($i/$columns*100%); 
-    }
-  }
-  .col-sm-flex {
-    flex: 1 1;
-  }
-}
-@media (min-width: $screen-md) {
-  @for $i from $columns through 1 {
-     .col-md-#{$i} {
-      flex: 0 0 ($i/$columns*100%); 
-    }
-  }
-  .col-md-flex {
-    flex: 1 1;
-  }
-}
-@media (min-width: $screen-lg) {
-  @for $i from $columns through 1 {
-     .col-lg-#{$i} {
-      flex: 0 0 ($i/$columns*100%); 
-    }
-  }
-  .col-lg-flex {
-    flex: 1 1;
-  }
-}
 
+@each $size in $breakpoint-classes {
+    @include breakpoint($size) {  
+        @for $i from $columns through 1 {
+            .col-#{$size}-#{$i} {
+              flex: 0 0 ($i/$columns*100%); 
+            }
+          }
+        .col-#{$size}-flex {
+          flex: 1 1;
+        }
+    }
+}
+    
 /**********************************************
 //
 // Vertical Columns
@@ -138,31 +115,19 @@ $breakpoint-classes: (xs sm md lg) !default;
     align-items: stretch;
 }
 
-@media only screen and (min-width: $screen-xs) {
-    .xs-vertical {
-        flex-flow: column nowrap;
-        align-items: stretch;
-    }
-}
-@media only screen and (min-width: $screen-sm) {
-    .sm-vertical {
-        flex-flow: column nowrap;
-        align-items: stretch;
-    }
-}
-@media only screen and (min-width: $screen-md) {   
-    .md-vertical {
-        flex-flow: column nowrap;
-        align-items: stretch;
-    }
-}
-@media only screen and (min-width: $screen-lg) { 
-    .lg-vertical {
-        flex-flow: column nowrap;
-        align-items: stretch;
-    }
+.xs-vertical {
+    flex-flow: column nowrap;
+    align-items: stretch;
 }
 
+@each $size in $breakpoint-classes {
+    @include breakpoint($size) {
+        .#{$size}-vertical {
+            flex-flow: column nowrap;
+            align-items: stretch;
+        }
+    }
+}
 
 /**********************************************
 //
@@ -205,6 +170,11 @@ $breakpoint-classes: (xs sm md lg) !default;
 // Order Classes
 //
 **********************************************/
+@for $i from 1 through $columns {  
+            .xs-order-#{$i} {
+                order: $i; 
+            }
+        }
 
 @each $size in $breakpoint-classes {
     @include breakpoint($size) {
@@ -222,6 +192,26 @@ $breakpoint-classes: (xs sm md lg) !default;
 // Block Columns
 //
 **********************************************/
+
+ @for $i from 1 through $block-columns {  
+            .col-xs-block-#{$i} {
+              flex-flow: row wrap;
+              overflow: visible;
+              list-style-type: none;
+
+              > li,
+              > div,
+              > section {
+                padding: $column-gutter/2;
+                flex: 0 0 percentage(1 / $i);
+              }
+            }
+        }
+
+.col-xs-block-6:first-child {
+    padding-left:0;
+}
+
 @each $size in $breakpoint-classes {
     @include breakpoint($size) {
         @for $i from $block-columns through 1 {

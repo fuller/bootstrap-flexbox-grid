@@ -140,7 +140,6 @@ module.exports = function(grunt) {
   // Default task.
 grunt.registerTask('default', ['sass', 'autoprefixer']);
 grunt.registerTask('default2', ['sass', 'autoprefixer', 'combine_mq', 'cssmin']);
-  grunt.registerTask('default2', ['jshint', 'qunit', 'concat', 'uglify']);
-    
+grunt.registerTask('default2', ['jshint', 'qunit', 'concat', 'uglify']);    
 
 };

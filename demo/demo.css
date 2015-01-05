@@ -29,10 +29,6 @@ header {
   border: 1px solid rgba(0,0,0,.15);
 }
 
-[class*="col-"]:last-child {
-  margin-right: 0;
-}
-
 [class*="block"] {
   margin-bottom: 0;
   background: transparent;
